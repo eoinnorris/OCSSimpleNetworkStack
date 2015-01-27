@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2903C73E1A77EC1800B60264 /* OCSParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2903C73D1A77EC1800B60264 /* OCSParam.swift */; };
 		292635281A728DCE00703E69 /* JSONIntegrationRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292635271A728DCE00703E69 /* JSONIntegrationRequests.swift */; };
 		2951816D1A711AA100755A54 /* OCSErrorGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2951816C1A711AA100755A54 /* OCSErrorGenerator.swift */; };
 		297C48461A6D14E3002ECAA9 /* TwitterIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297C48451A6D14E3002ECAA9 /* TwitterIntegrationTests.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2903C73D1A77EC1800B60264 /* OCSParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCSParam.swift; sourceTree = "<group>"; };
 		292635271A728DCE00703E69 /* JSONIntegrationRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONIntegrationRequests.swift; path = ../JSONIntegrationRequests.swift; sourceTree = "<group>"; };
 		2951816C1A711AA100755A54 /* OCSErrorGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCSErrorGenerator.swift; sourceTree = "<group>"; };
 		297C48451A6D14E3002ECAA9 /* TwitterIntegrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitterIntegrationTests.swift; path = ../OCSNetworkStack/TwitterIntegrationTests.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 		29DE30041A66A3BE002E2223 = {
 			isa = PBXGroup;
 			children = (
+				2903C73D1A77EC1800B60264 /* OCSParam.swift */,
 				29DE300F1A66A3BE002E2223 /* OCSNetworkStack */,
 				29DE30221A66A3BE002E2223 /* OCSNetworkStackTests */,
 				29DE300E1A66A3BE002E2223 /* Products */,
@@ -270,6 +273,7 @@
 				29C8E6461A67E7580063756B /* OCSHeaders.swift in Sources */,
 				29E116DB1A77A87E00B5DD45 /* OCSHttpProgress.swift in Sources */,
 				297C48481A6D18DC002ECAA9 /* OCSURLGenerator.swift in Sources */,
+				2903C73E1A77EC1800B60264 /* OCSParam.swift in Sources */,
 				29DE30301A66A3E8002E2223 /* OCSHttp.swift in Sources */,
 				29C8E6401A67E6E60063756B /* OCSHttpSettings.swift in Sources */,
 				29D6C5151A69592A008A04F1 /* OCSNetworkProgressResponse.swift in Sources */,

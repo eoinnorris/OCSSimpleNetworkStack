@@ -27,8 +27,8 @@ enum Method {
 
 
 public protocol OCSParamProtocol{
-    var allHeaders:Dictionary<String,String>? { get }
-    var allForms:Dictionary<String,String>? { get }
+    var allHeaders:Dictionary<String,String> { get }
+    var allForms:Dictionary<String,String> { get }
     var bodyStr: String? { get }
     var bodyType:BODYType { get}
     func validate()->ValidationError
@@ -82,6 +82,8 @@ public struct OCSURLRequest{
 public struct OCSRequestParam{
     
     var param:OCSParamProtocol?
+    var methodType:String = "GET"
+    
     
     var allHeaders:Dictionary<String,String>?  {
         get{

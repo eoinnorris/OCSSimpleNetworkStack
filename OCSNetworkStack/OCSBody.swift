@@ -8,32 +8,19 @@
 
 import Cocoa
 
-/*
-public protocol OCSParamProtocol{
-    var allHeaders:Dictionary<String,String>? { get }
-    var allForms:Dictionary<String,String>? { get }
-    var bodyStr: String? { get }
-    var bodyType:BODYType { get}
-    func validate()->ValidationError
-}
-
-*/
-
-public struct OCSBody:OCSParamProtocol {
+public class OCSBody:OCSParam {
     
-    public var allHeaders:Dictionary<String,String>? = nil
-    public var allForms:Dictionary<String,String>?? = nil
-    public var bodyType:BODYType = .Body
-    public var bodyStr:String?
-    
-
     init(bodyStr:String){
+        super.init()
         self.bodyStr = bodyStr
+        self.bodyType = .Body
     }
     
+    // create body from dictionary
+    // handle url encoding?
     
-    public func validate()->ValidationError{
-        return ((self.bodyStr != nil), nil);
+    public override func validate()->ValidationError{
+        return (false,nil)
     }
     
     

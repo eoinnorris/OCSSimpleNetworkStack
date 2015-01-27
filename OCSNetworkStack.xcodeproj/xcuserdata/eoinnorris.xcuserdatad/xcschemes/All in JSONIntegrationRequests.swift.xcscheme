@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme
+   version = "1.3">
+   <BuildAction>
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForRunning = "YES"
+            buildForTesting = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "29DE301E1A66A3BE002E2223"
+               BuildableName = "OCSNetworkStackTests.xctest"
+               BlueprintName = "OCSNetworkStackTests"
+               ReferencedContainer = "container:OCSNetworkStack.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
+   </BuildAction>
+   <TestAction
+      buildConfiguration = "Debug">
+      <Testables>
+         <TestableReference>
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "29DE301E1A66A3BE002E2223"
+               BuildableName = "OCSNetworkStackTests.xctest"
+               BlueprintName = "OCSNetworkStackTests"
+               ReferencedContainer = "container:OCSNetworkStack.xcodeproj">
+            </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "OCSNetworkStackTests">
+               </Test>
+               <Test
+                  Identifier = "TwitterIntegrationTests">
+               </Test>
+               <Test
+                  Identifier = "XMLIntegrationRequests">
+               </Test>
+            </SkippedTests>
+         </TestableReference>
+      </Testables>
+   </TestAction>
+   <LaunchAction
+      useCustomWorkingDirectory = "NO">
+   </LaunchAction>
+</Scheme>

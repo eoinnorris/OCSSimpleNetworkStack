@@ -10,25 +10,18 @@ import Cocoa
 
 
 
-public struct OCSForms: OCSParamProtocol{
+public class OCSForms: OCSParam{
     
-    public var allHeaders:Dictionary<String,String>? = nil
-    public var allForms:Dictionary<String,String>?
-    public var bodyType:BODYType = .Forms
-    public var bodyStr:String?
-    
-    
-    public init(){
-        self.allForms = nil
-    }
     
     public init(forms:Dictionary<String,String>){
+        super.init()
         self.allForms = forms
+        self.bodyType = .Forms
     }
     
     
-    public func validate()->ValidationError{
-        return (allForms != nil,NSError());
+    public override func validate()->ValidationError{
+        return (false,nil)
     }
     
 }
