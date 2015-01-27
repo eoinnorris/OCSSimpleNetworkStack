@@ -8,11 +8,27 @@
 
 import Cocoa
 
-public struct OCSForms {
-    var forms:Dictionary<String,Int>? = nil
+
+
+public struct OCSForms: OCSParamProtocol{
     
-    internal func validate()->ValidationError{
-        return (forms != nil,NSError());
+    public var allHeaders:Dictionary<String,String>? = nil
+    public var allForms:Dictionary<String,String>?
+    public var bodyType:BODYType = .Forms
+    public var bodyStr:String?
+    
+    
+    public init(){
+        self.allForms = nil
+    }
+    
+    public init(forms:Dictionary<String,String>){
+        self.allForms = forms
+    }
+    
+    
+    public func validate()->ValidationError{
+        return (allForms != nil,NSError());
     }
     
 }

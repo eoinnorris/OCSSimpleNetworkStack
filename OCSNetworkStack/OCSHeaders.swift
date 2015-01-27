@@ -8,16 +8,25 @@
 
 import Cocoa
 
-public struct OCSHeaders {
-    var headers:[String:String]? = nil
-    internal func validate()->ValidationError{
-        return (headers != nil,NSError());
+
+// crying out for a super class
+public struct OCSHeaders:OCSParamProtocol {
+    public var allHeaders:Dictionary<String,String>?
+    public var allForms:Dictionary<String,String>?
+    public var bodyType:BODYType = .Forms
+    public var bodyStr:String?
+    
+    
+    public init(){
+        self.allHeaders = nil
     }
     
-    public init(headers:[String:String]!){
-        self.headers = headers
+    public init(headers:Dictionary<String,String>){
+        self.allHeaders = headers
     }
     
-    public init (){
+    
+    public func validate()->ValidationError{
+        return (allHeaders != nil,NSError());
     }
 }

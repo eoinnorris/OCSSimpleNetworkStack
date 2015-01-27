@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		292635281A728DCE00703E69 /* JSONIntegrationRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292635271A728DCE00703E69 /* JSONIntegrationRequests.swift */; };
+		2951816D1A711AA100755A54 /* OCSErrorGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2951816C1A711AA100755A54 /* OCSErrorGenerator.swift */; };
 		297C48461A6D14E3002ECAA9 /* TwitterIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297C48451A6D14E3002ECAA9 /* TwitterIntegrationTests.swift */; };
 		297C48481A6D18DC002ECAA9 /* OCSURLGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297C48471A6D18DC002ECAA9 /* OCSURLGenerator.swift */; };
 		297C484A1A6D1A99002ECAA9 /* OCSStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297C48491A6D1A99002ECAA9 /* OCSStringExtension.swift */; };
-		29C8E63E1A67E6BB0063756B /* OCSNetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C8E63D1A67E6BB0063756B /* OCSNetworkResponse.swift */; };
-		29C8E6401A67E6E60063756B /* OCSNetworkSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C8E63F1A67E6E60063756B /* OCSNetworkSettings.swift */; };
+		29C8E63E1A67E6BB0063756B /* OCSHttpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C8E63D1A67E6BB0063756B /* OCSHttpResponse.swift */; };
+		29C8E6401A67E6E60063756B /* OCSHttpSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C8E63F1A67E6E60063756B /* OCSHttpSettings.swift */; };
 		29C8E6421A67E70E0063756B /* OCSResponseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C8E6411A67E70E0063756B /* OCSResponseType.swift */; };
 		29C8E6441A67E7390063756B /* OCSForms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C8E6431A67E7390063756B /* OCSForms.swift */; };
 		29C8E6461A67E7580063756B /* OCSHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C8E6451A67E7580063756B /* OCSHeaders.swift */; };
@@ -24,8 +26,9 @@
 		29DE30171A66A3BE002E2223 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29DE30161A66A3BE002E2223 /* Images.xcassets */; };
 		29DE301A1A66A3BE002E2223 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29DE30181A66A3BE002E2223 /* Main.storyboard */; };
 		29DE30261A66A3BE002E2223 /* OCSNetworkStackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DE30251A66A3BE002E2223 /* OCSNetworkStackTests.swift */; };
-		29DE30301A66A3E8002E2223 /* OCSSimpleNetworkInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DE302F1A66A3E8002E2223 /* OCSSimpleNetworkInterface.swift */; };
-		29DE30321A66D641002E2223 /* OCSSimpleNetworkErrorGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DE30311A66D641002E2223 /* OCSSimpleNetworkErrorGenerator.swift */; };
+		29DE30301A66A3E8002E2223 /* OCSHttp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DE302F1A66A3E8002E2223 /* OCSHttp.swift */; };
+		29E116DB1A77A87E00B5DD45 /* OCSHttpProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E116DA1A77A87E00B5DD45 /* OCSHttpProgress.swift */; };
+		29E116DD1A77AA5200B5DD45 /* XMLIntegrationRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E116DC1A77AA5200B5DD45 /* XMLIntegrationRequests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,11 +42,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		292635271A728DCE00703E69 /* JSONIntegrationRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONIntegrationRequests.swift; path = ../JSONIntegrationRequests.swift; sourceTree = "<group>"; };
+		2951816C1A711AA100755A54 /* OCSErrorGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCSErrorGenerator.swift; sourceTree = "<group>"; };
 		297C48451A6D14E3002ECAA9 /* TwitterIntegrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitterIntegrationTests.swift; path = ../OCSNetworkStack/TwitterIntegrationTests.swift; sourceTree = "<group>"; };
 		297C48471A6D18DC002ECAA9 /* OCSURLGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCSURLGenerator.swift; sourceTree = "<group>"; };
 		297C48491A6D1A99002ECAA9 /* OCSStringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCSStringExtension.swift; sourceTree = "<group>"; };
-		29C8E63D1A67E6BB0063756B /* OCSNetworkResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCSNetworkResponse.swift; sourceTree = "<group>"; };
-		29C8E63F1A67E6E60063756B /* OCSNetworkSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCSNetworkSettings.swift; sourceTree = "<group>"; };
+		29C8E63D1A67E6BB0063756B /* OCSHttpResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCSHttpResponse.swift; sourceTree = "<group>"; };
+		29C8E63F1A67E6E60063756B /* OCSHttpSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCSHttpSettings.swift; sourceTree = "<group>"; };
 		29C8E6411A67E70E0063756B /* OCSResponseType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCSResponseType.swift; sourceTree = "<group>"; };
 		29C8E6431A67E7390063756B /* OCSForms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCSForms.swift; sourceTree = "<group>"; };
 		29C8E6451A67E7580063756B /* OCSHeaders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCSHeaders.swift; sourceTree = "<group>"; };
@@ -60,8 +65,9 @@
 		29DE301F1A66A3BE002E2223 /* OCSNetworkStackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OCSNetworkStackTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		29DE30241A66A3BE002E2223 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		29DE30251A66A3BE002E2223 /* OCSNetworkStackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCSNetworkStackTests.swift; sourceTree = "<group>"; };
-		29DE302F1A66A3E8002E2223 /* OCSSimpleNetworkInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCSSimpleNetworkInterface.swift; sourceTree = "<group>"; };
-		29DE30311A66D641002E2223 /* OCSSimpleNetworkErrorGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCSSimpleNetworkErrorGenerator.swift; sourceTree = "<group>"; };
+		29DE302F1A66A3E8002E2223 /* OCSHttp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCSHttp.swift; sourceTree = "<group>"; };
+		29E116DA1A77A87E00B5DD45 /* OCSHttpProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCSHttpProgress.swift; sourceTree = "<group>"; };
+		29E116DC1A77AA5200B5DD45 /* XMLIntegrationRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLIntegrationRequests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,13 +119,14 @@
 			children = (
 				297C484B1A6D1A9F002ECAA9 /* Extension */,
 				297C48471A6D18DC002ECAA9 /* OCSURLGenerator.swift */,
-				29DE302F1A66A3E8002E2223 /* OCSSimpleNetworkInterface.swift */,
+				29E116DA1A77A87E00B5DD45 /* OCSHttpProgress.swift */,
+				29C8E63F1A67E6E60063756B /* OCSHttpSettings.swift */,
+				29DE302F1A66A3E8002E2223 /* OCSHttp.swift */,
+				2951816C1A711AA100755A54 /* OCSErrorGenerator.swift */,
 				29C8E64B1A67E8520063756B /* OCSError.swift */,
-				29DE30311A66D641002E2223 /* OCSSimpleNetworkErrorGenerator.swift */,
 				29DE30121A66A3BE002E2223 /* AppDelegate.swift */,
 				29DE30141A66A3BE002E2223 /* ViewController.swift */,
-				29C8E63D1A67E6BB0063756B /* OCSNetworkResponse.swift */,
-				29C8E63F1A67E6E60063756B /* OCSNetworkSettings.swift */,
+				29C8E63D1A67E6BB0063756B /* OCSHttpResponse.swift */,
 				29C8E6411A67E70E0063756B /* OCSResponseType.swift */,
 				29D6C5141A69592A008A04F1 /* OCSNetworkProgressResponse.swift */,
 				29C8E6431A67E7390063756B /* OCSForms.swift */,
@@ -144,6 +151,8 @@
 		29DE30221A66A3BE002E2223 /* OCSNetworkStackTests */ = {
 			isa = PBXGroup;
 			children = (
+				292635271A728DCE00703E69 /* JSONIntegrationRequests.swift */,
+				29E116DC1A77AA5200B5DD45 /* XMLIntegrationRequests.swift */,
 				297C48451A6D14E3002ECAA9 /* TwitterIntegrationTests.swift */,
 				29DE30251A66A3BE002E2223 /* OCSNetworkStackTests.swift */,
 				29DE30231A66A3BE002E2223 /* Supporting Files */,
@@ -259,18 +268,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				29C8E6461A67E7580063756B /* OCSHeaders.swift in Sources */,
+				29E116DB1A77A87E00B5DD45 /* OCSHttpProgress.swift in Sources */,
 				297C48481A6D18DC002ECAA9 /* OCSURLGenerator.swift in Sources */,
-				29DE30301A66A3E8002E2223 /* OCSSimpleNetworkInterface.swift in Sources */,
-				29C8E6401A67E6E60063756B /* OCSNetworkSettings.swift in Sources */,
+				29DE30301A66A3E8002E2223 /* OCSHttp.swift in Sources */,
+				29C8E6401A67E6E60063756B /* OCSHttpSettings.swift in Sources */,
 				29D6C5151A69592A008A04F1 /* OCSNetworkProgressResponse.swift in Sources */,
-				29DE30321A66D641002E2223 /* OCSSimpleNetworkErrorGenerator.swift in Sources */,
 				29DE30151A66A3BE002E2223 /* ViewController.swift in Sources */,
 				29DE30131A66A3BE002E2223 /* AppDelegate.swift in Sources */,
+				2951816D1A711AA100755A54 /* OCSErrorGenerator.swift in Sources */,
 				29C8E6441A67E7390063756B /* OCSForms.swift in Sources */,
 				29C8E6481A67E7730063756B /* OCSBody.swift in Sources */,
 				297C484A1A6D1A99002ECAA9 /* OCSStringExtension.swift in Sources */,
 				29C8E64C1A67E8520063756B /* OCSError.swift in Sources */,
-				29C8E63E1A67E6BB0063756B /* OCSNetworkResponse.swift in Sources */,
+				29C8E63E1A67E6BB0063756B /* OCSHttpResponse.swift in Sources */,
 				29C8E64A1A67E7930063756B /* OCSSession.swift in Sources */,
 				29C8E6421A67E70E0063756B /* OCSResponseType.swift in Sources */,
 			);
@@ -280,8 +290,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29E116DD1A77AA5200B5DD45 /* XMLIntegrationRequests.swift in Sources */,
 				297C48461A6D14E3002ECAA9 /* TwitterIntegrationTests.swift in Sources */,
 				29DE30261A66A3BE002E2223 /* OCSNetworkStackTests.swift in Sources */,
+				292635281A728DCE00703E69 /* JSONIntegrationRequests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

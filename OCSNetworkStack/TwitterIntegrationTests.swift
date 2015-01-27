@@ -15,14 +15,14 @@ class TwitterIntegrationTests: XCTestCase {
     
     var token:String = ""
     let kTimeOut = 10.0
-    let interface = OCSSimpleNetworkInterface()
+    let interface = OCSHttp()
     let kTwitterAuth = "https://api.twitter.com/oauth2/token"
     let kJSONPlaceHolderPosts = "http://jsonplaceholder.typicode.com/posts/1"
 
     override func setUp() {
         super.setUp()
-        OCSURLRequest.setGlobalTimeout(100.0)
-        OCSURLRequest.setGlobalCache()
+        OCSURLRequest.setGlobalTimeout(10.0)
+        OCSURLRequest.setGlobalCache(.ReloadIgnoringLocalCacheData)
 
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -32,31 +32,16 @@ class TwitterIntegrationTests: XCTestCase {
         super.tearDown()
     }
     
-    func testSimpleJsonAsData(){
-        var expectation:XCTestExpectation = self.expectationWithDescription("No Error")
-        
-        // two line setup
-        var settings = OCSNetworkSettings(path: kJSONPlaceHolderPosts)
-        
-        
-        self.interface.sendAsyncRequest(settings!, responseFunc: { (response) -> Void in
-            if let possibleData = response.data{
-                    XCTAssert((possibleData.length > 0), "Pass")
-            }
-        })
-        
-        self.waitForExpectationsWithTimeout(kTimeOut, handler: { (NSError) -> Void in
-            XCTAssert(true, "Failed - the networkTimedOut")
-        })
-    }
+
     
     func testGetTwitterTokenFailsBadRequest() {
         var expectation:XCTestExpectation = self.expectationWithDescription("No Error")
         
         // two line setup
-        var settings = OCSNetworkSettings(path: kTwitterAuth)
+        var headers = OCSHeaders()
+        var settings = OCSHttpSettings(path: kTwitterAuth)
         
-        self.interface.sendAsyncRequest(settings!, responseFunc: { (response) -> Void in
+        self.interface.sendAsyncRequest(settings, responseFunc: { (response) -> Void in
             if let response = response.internalResponse{
                 if response.statusCode == 400{
                     XCTAssert(true, "Pass")
@@ -74,7 +59,7 @@ class TwitterIntegrationTests: XCTestCase {
     func testGetTwitterTokenFailsBadRequestOneLine() {
      var expectation:XCTestExpectation = self.expectationWithDescription("No Error")
         
-        self.interface.sendAsyncRequest(OCSNetworkSettings(path: kTwitterAuth)!, responseFunc: { (response) -> Void in
+        self.interface.sendAsyncRequest(OCSHttpSettings(path: kTwitterAuth), responseFunc: { (response) -> Void in
             if let response = response.internalResponse{
                 if response.statusCode == 400{
                     XCTAssert(true, "Pass")
@@ -92,7 +77,7 @@ class TwitterIntegrationTests: XCTestCase {
         var expectation:XCTestExpectation = self.expectationWithDescription("No Error")
         
         // enclosure with inferred paramater lists.
-        self.interface.sendAsyncRequest(OCSNetworkSettings(path: kTwitterAuth)!, responseFunc: {
+        self.interface.sendAsyncRequest(OCSHttpSettings(path: kTwitterAuth), responseFunc: {
             if let response = $0.internalResponse{
                 if response.statusCode == 400{
                     XCTAssert(true, "Pass")
@@ -105,9 +90,6 @@ class TwitterIntegrationTests: XCTestCase {
         })
         // This is an example of a functional test case.
     }
-    
 
     
-    
-
 }

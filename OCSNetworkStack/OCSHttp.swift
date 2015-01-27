@@ -9,30 +9,28 @@
 import Cocoa
 
 
-typealias ValidationError = (isError:Bool,error:NSError?)
+public typealias ValidationError = (isError:Bool,error:NSError?)
 
 
 internal class OCSSimpleNetworkInterfaceHelper{
-    var settings:OCSNetworkSettings?
+    var settings:OCSHttpSettings?
     
     internal func addHeadersOrBody(){
         
     }
-    
-    
 }
 
-public class OCSSimpleNetworkInterface: NSObject,NSURLConnectionDataDelegate{
+public class OCSHttp: NSObject,NSURLConnectionDataDelegate{
     
     public override init(){
-        self.response = OCSNetworkResponse()
-        self.settings = OCSNetworkSettings()
+        self.response = OCSHttpResponse()
+        self.settings = OCSHttpSettings()
         super.init();
     }
     
-    var settings:OCSNetworkSettings
-    var response:OCSNetworkResponse
-    var responsefunc:((OCSNetworkResponse!) -> Void)?
+    var settings:OCSHttpSettings
+    var response:OCSHttpResponse
+    var responsefunc:((OCSHttpResponse!) -> Void)?
     var helper:OCSSimpleNetworkInterfaceHelper = OCSSimpleNetworkInterfaceHelper()
 
     // NSURLConnectionDownloadDelegate handling
@@ -47,9 +45,6 @@ public class OCSSimpleNetworkInterface: NSObject,NSURLConnectionDataDelegate{
         responsefunc!(self.response)
     }
     
-//    public func connectionDidFinishDownloading(connection: NSURLConnection, destinationURL: NSURL){
-//        responsefunc!(self.response)
-//    }
     
     public func connection(connection: NSURLConnection, didFailWithError error: NSError){
         self.response.error = error;
@@ -60,12 +55,12 @@ public class OCSSimpleNetworkInterface: NSObject,NSURLConnectionDataDelegate{
         self.response.internalResponse = response as? NSHTTPURLResponse
     }
 
-    internal func populateResponseWithBadSettings(response: (OCSNetworkResponse!) -> Void, error:NSError){
+    internal func populateResponseWithBadSettings(response: (OCSHttpResponse!) -> Void, error:NSError){
         var inValidSettingsError = NSError()
-        response(OCSNetworkResponse(error: inValidSettingsError));
+        response(OCSHttpResponse(error: inValidSettingsError));
     }
     
-    internal func validateSettings(response: (OCSNetworkResponse!) -> Void)->ValidationError{
+    internal func validateSettings(settings:OCSHttpSettings, response: (OCSHttpResponse!) -> Void)->ValidationError{
         var validSettings:ValidationError = settings.validate()
     
         if let error = validSettings.error{
@@ -75,21 +70,21 @@ public class OCSSimpleNetworkInterface: NSObject,NSURLConnectionDataDelegate{
         return validSettings
     }
     
+    public func sendAsyncRequest(path:String, responseFunc: (OCSHttpResponse!) -> Void) -> Void{
+        self.sendAsyncRequest(OCSHttpSettings(path: path), responseFunc: responseFunc);
+        return;
+    }
     
-    public func sendAsyncRequest(settings:OCSNetworkSettings, responseFunc: (OCSNetworkResponse!) -> Void) -> NSOperation?{
-        
-        self.settings = settings
-        self.helper.settings = settings;
-
-        var validSettings = validateSettings(responseFunc)
+    public func sendAsyncRequest(settings:OCSHttpSettings, responseFunc: (OCSHttpResponse!) -> Void) -> Void{
+        var validSettings = validateSettings(settings, responseFunc)
         if validSettings.isError == false{
+            self.settings = settings
             self.responsefunc = responseFunc
-            var url = self.settings.url
-            var request = self.settings.requestType.request
+            var request = self.settings.internalRequest.urlRequest
             var conn = NSURLConnection(request: request, delegate: self)
         }
     
-        return (self.settings.willQueue) ? NSOperation() :  nil
+        return;
     }
 
     
