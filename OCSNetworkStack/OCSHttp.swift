@@ -80,8 +80,16 @@ public class OCSHttp: NSObject,NSURLConnectionDataDelegate{
         if validSettings.isError == false{
             self.settings = settings
             self.responsefunc = responseFunc
-            var request = self.settings.internalRequest.urlRequest
-            var conn = NSURLConnection(request: request, delegate: self)
+            self.settings.internalRequest.methodType = self.settings.method
+            if let request = self.settings.internalRequest.urlRequest{
+                if let allHeaders = request.allHTTPHeaderFields{
+                    for (key,value) in allHeaders{
+                        NSLog("key is \(key) value is \(value)")
+                    }
+                }
+                
+                var conn = NSURLConnection(request: request, delegate: self)
+            }
         }
     
         return;

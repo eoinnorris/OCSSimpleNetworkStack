@@ -34,6 +34,18 @@ extension Character {
 
 extension String {
     
+    func base64Encoded() -> String {
+        let plainData = dataUsingEncoding(NSUTF8StringEncoding)
+        let base64String = plainData?.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(0))
+        return base64String!
+    }
+    
+    func base64Decoded() -> String {
+        let decodedData = NSData(base64EncodedString: self, options:NSDataBase64DecodingOptions(0))
+        let decodedString = NSString(data: decodedData!, encoding: NSUTF8StringEncoding)
+        return decodedString!
+    }
+
 
     func urlEncode()->String{
         var generator = self.generate()
@@ -48,7 +60,7 @@ extension String {
                 output.append(thisChar)
             } else {
                 var st = NSString(format:"%2X", thisChar.utf8Value()) as String
-                output = output + st
+                output = output + "%\(st)"
             }
             
         }

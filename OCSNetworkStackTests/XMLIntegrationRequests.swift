@@ -27,7 +27,7 @@ class XMLIntegrationRequests: XCTestCase {
         super.tearDown()
     }
 
-    func testSimpleJsonReturningNSXMLDocument(){
+    func testSimpleNSXMLDocument(){
         var expectation:XCTestExpectation = self.expectationWithDescription("No Error")
         
         http.sendAsyncRequest(KiTunesRSS, responseFunc:{
@@ -45,7 +45,26 @@ class XMLIntegrationRequests: XCTestCase {
     }
     
     
-    func testSimpleJsonReturningXMLString(){
+    func testSimpleXMLData(){
+        var expectation:XCTestExpectation = self.expectationWithDescription("No Error")
+        
+        
+        http.sendAsyncRequest(KiTunesRSS, responseFunc:{
+            if let possibleData = $0.data{
+                XCTAssert((possibleData.length > 0), "Pass")
+            } else {
+                XCTAssert(false,"Fail")
+            }
+            expectation.fulfill()
+        })
+        
+        self.waitForExpectationsWithTimeout(kTimeOut, handler: { (NSError) -> Void in
+            XCTAssert(true, "Failed - the networkTimedOut")
+        })
+    }
+    
+    
+    func testSimpleXMLString(){
         var expectation:XCTestExpectation = self.expectationWithDescription("No Error")
         
         

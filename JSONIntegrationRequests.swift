@@ -17,7 +17,10 @@ class TestSimpleIntegrationRequests: XCTestCase {
     let http = OCSHttp()
     let KiTunesJSON = "https://itunes.apple.com/us/rss/topaudiobooks/limit=5/json"
     
-
+    
+    typealias JSON = AnyObject
+    
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -30,13 +33,13 @@ class TestSimpleIntegrationRequests: XCTestCase {
     
     // MARK: -- Success
     
-
+    
     func testSimpleJsonReturningJSONDict(){
         var expectation:XCTestExpectation = self.expectationWithDescription("No Error")
         
         
         http.sendAsyncRequest(KiTunesJSON, responseFunc:{
-            if let possibleData: AnyObject = $0.JSONObject{
+            if let possibleData: JSON = $0.JSONObject{
                 if let knownDictionary = possibleData as? NSDictionary{
                     XCTAssert((possibleData.count > 0), "Pass")
                 }
@@ -48,7 +51,7 @@ class TestSimpleIntegrationRequests: XCTestCase {
             XCTAssert(true, "Failed - the networkTimedOut")
         })
     }
-
+    
     
     func testSimpleJsonReturningString(){
         var expectation:XCTestExpectation = self.expectationWithDescription("No Error")
@@ -88,9 +91,10 @@ class TestSimpleIntegrationRequests: XCTestCase {
     
     func testSimpleJsonAsData(){
         var expectation:XCTestExpectation = self.expectationWithDescription("No Error")
-    
+        
         http.sendAsyncRequest(OCSHttpSettings(path: KiTunesJSON), responseFunc: {
             if let possibleData = $0.data{
+                NSLog("data is %@", possibleData)
                 XCTAssert((possibleData.length > 0), "Pass")
                 expectation.fulfill()
             }
@@ -102,7 +106,7 @@ class TestSimpleIntegrationRequests: XCTestCase {
     }
     
     // MARK: -- Failures
-
+    
     func testSimpleJsonReturningNSXMLDocumentFails(){
         var expectation:XCTestExpectation = self.expectationWithDescription("No Error")
         
@@ -140,5 +144,5 @@ class TestSimpleIntegrationRequests: XCTestCase {
             XCTAssert(true, "Failed - the networkTimedOut")
         })
     }
-
+    
 }

@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		2903C73E1A77EC1800B60264 /* OCSParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2903C73D1A77EC1800B60264 /* OCSParam.swift */; };
 		292635281A728DCE00703E69 /* JSONIntegrationRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292635271A728DCE00703E69 /* JSONIntegrationRequests.swift */; };
+		292CC8B21A7968D90018E933 /* TwitterIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297C48451A6D14E3002ECAA9 /* TwitterIntegrationTests.swift */; };
 		2951816D1A711AA100755A54 /* OCSErrorGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2951816C1A711AA100755A54 /* OCSErrorGenerator.swift */; };
-		297C48461A6D14E3002ECAA9 /* TwitterIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297C48451A6D14E3002ECAA9 /* TwitterIntegrationTests.swift */; };
+		2974D55C1A7934BD008487DE /* OCSStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297C48491A6D1A99002ECAA9 /* OCSStringExtension.swift */; };
 		297C48481A6D18DC002ECAA9 /* OCSURLGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297C48471A6D18DC002ECAA9 /* OCSURLGenerator.swift */; };
 		297C484A1A6D1A99002ECAA9 /* OCSStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297C48491A6D1A99002ECAA9 /* OCSStringExtension.swift */; };
 		29C8E63E1A67E6BB0063756B /* OCSHttpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C8E63D1A67E6BB0063756B /* OCSHttpResponse.swift */; };
@@ -294,8 +295,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2974D55C1A7934BD008487DE /* OCSStringExtension.swift in Sources */,
 				29E116DD1A77AA5200B5DD45 /* XMLIntegrationRequests.swift in Sources */,
-				297C48461A6D14E3002ECAA9 /* TwitterIntegrationTests.swift in Sources */,
+				292CC8B21A7968D90018E933 /* TwitterIntegrationTests.swift in Sources */,
 				29DE30261A66A3BE002E2223 /* OCSNetworkStackTests.swift in Sources */,
 				292635281A728DCE00703E69 /* JSONIntegrationRequests.swift in Sources */,
 			);

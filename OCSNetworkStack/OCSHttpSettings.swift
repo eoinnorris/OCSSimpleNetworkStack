@@ -19,10 +19,10 @@ public enum BODYType{
     case None
 }
 
-enum Method {
-    case GET
-    case POST
-    case DELETE
+public enum Method:String {
+    case GET = "GET"
+    case POST = "POST"
+    case DELETE = "DELETE"
 }
 
 
@@ -37,17 +37,32 @@ public protocol OCSParamProtocol{
 
 public struct OCSURLRequest{
     
-    var urlRequest:NSURLRequest{
-        get{
-            return NSURLRequest(URL: self.url!, cachePolicy: self.cacheType, timeoutInterval: self.timeout)
-            /*
-            [request setHTTPMethod:method];
-            [request setAllHTTPHeaderFields:self.defaultHeaders];
-            */
+    var urlRequest:NSMutableURLRequest?
+    
+    internal func setRequestMethod(method:Method){
+        var methodStr = method.rawValue
+        self.urlRequest!.HTTPMethod = methodStr
+    }
+    
+    internal func setRequestHeaders(headers:OCSHeaders){
+        for (key,value) in headers.allHeaders{
+            self.urlRequest!.setValue(value as NSString, forHTTPHeaderField:key  as NSString)
         }
     }
     
-    var param:OCSRequestParam?
+    internal func setRequestBody(body:OCSBody){
+        self.urlRequest!.HTTPBody = body.data
+    }
+    
+    
+    var param:OCSBody?
+    var headers:OCSHeaders?
+    var methodType:Method = .GET{
+        didSet{
+            var methodStr = methodType.rawValue
+            self.urlRequest!.HTTPMethod = methodStr
+        }
+    }
     
     var cacheType:NSURLRequestCachePolicy = OCSURLRequestGlobalCache
     var url:NSURL? = NSURL()
@@ -69,13 +84,36 @@ public struct OCSURLRequest{
         }
     }
     
-    init(url:NSURL, requestParam:OCSRequestParam?){
+    internal func setUpRequest(){
+        if (self.methodType != .GET){
+            self.setRequestMethod(self.methodType)
+        }
+        if let realBody = self.param{
+            self.setRequestBody(realBody)
+        }
+        if let realHeaders = self.headers{
+            self.setRequestHeaders(realHeaders)
+        }
+        
+        
+    }
+    
+    init(url:NSURL, body:OCSBody? = nil, headers:OCSHeaders? = nil){
         self.url = url;
-        self.param = requestParam
+        self.param = body
+        self.headers = headers
+        self.urlRequest = NSMutableURLRequest(URL: self.url!, cachePolicy: self.cacheType, timeoutInterval: self.timeout)
+        var (_,isError) = self.validateTypes()
+        if isError == nil{
+   
+            self.setUpRequest()
+        } else {
+            // callback?
+        }
     }
     
     init(){
-        
+        self.urlRequest = nil
     }
 }
 
@@ -151,7 +189,7 @@ public struct OCSHttpSettings {
     let errorGenerator = OCSErrorGenerator()
     
     // forms
-    // private - onnly settable in the init
+    // private - only settable in the init
     var internalRequest:OCSURLRequest = OCSURLRequest()
     var deSerialisationType:DeSerialisationType = .NONE
     
@@ -165,15 +203,15 @@ public struct OCSHttpSettings {
     
     var url: NSURL = NSURL()
 
-    var method: Method = .GET
+    public var method: Method = .GET{
+        didSet{
+            self.internalRequest.methodType = method
+        }
+    }
     var bodytype:BODYType = .None
     var responseType:OCSResponseType = OCSResponseType()
     
     var willQueue:Bool = false
-    
-    
-    
-    
     
     public func setAcceptableContentTypes([String])->Bool{
         return true
@@ -187,7 +225,7 @@ public struct OCSHttpSettings {
         var possibleURL = NSURL(string: path)
         if let thisURL = possibleURL{
             self.url = thisURL
-            self.internalRequest = OCSURLRequest(url: self.url , requestParam: nil);
+            self.internalRequest = OCSURLRequest(url: self.url , body: nil);
         }
     }
     
@@ -198,24 +236,38 @@ public struct OCSHttpSettings {
     
     public init(url:NSURL){
         self.url = url
-        self.internalRequest = OCSURLRequest(url: self.url, requestParam: nil)
+        self.internalRequest = OCSURLRequest(url: self.url)
     }
     
     // convenience inits for BodyTypes:
-    
+    // change to path
     public init(url:NSURL,body:OCSBody){
         self.url = url
-        self.internalRequest = OCSURLRequest(url: url, requestParam:OCSRequestParam(requestParam: body));
+        self.internalRequest = OCSURLRequest(url: url, body:body);
     }
     
     public init(url:NSURL,forms:OCSForms){
         self.url = url
-        self.internalRequest = OCSURLRequest(url: url,requestParam:OCSRequestParam(requestParam: forms));
+        self.internalRequest = OCSURLRequest(url: url, body:forms);
     }
     
-    public init(url:NSURL,headers:OCSHeaders){
+    
+    internal func createHeadersFromBodyIfHeadersMissing(body:OCSBody?)->OCSHeaders?{
+        var result:OCSHeaders? = nil
+        if let realBody = body{
+            result =  OCSHeaders(contentLength: realBody.length);
+        }
+        return result
+    }
+    
+    
+    public init(url:NSURL,var headers:OCSHeaders? = nil,body:OCSBody? = nil){
+        if headers == nil {
+           headers = self.createHeadersFromBodyIfHeadersMissing(body)
+        }
         self.url = url
-        self.internalRequest = OCSURLRequest(url: url, requestParam:OCSRequestParam(requestParam: headers));
+        self.internalRequest = OCSURLRequest(url: url, body:body, headers:headers);
+        
     }
     
     // MARK: -- validation

@@ -10,11 +10,11 @@ import Cocoa
 
 
 
-public class OCSForms: OCSParam{
+public class OCSForms: OCSBody{
     
     
     public init(forms:Dictionary<String,String>){
-        super.init()
+        super.init(bodyStr: "")
         self.allForms = forms
         self.bodyType = .Forms
     }
